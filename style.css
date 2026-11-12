@@ -1,0 +1,825 @@
+:root {
+    --maroon: #65232B;
+    --cream: #F8E5D7;
+    --brown: #432720;
+    --pink: #EFC9C8;
+    --olive: #6E6B41;
+    --green: #1F4D2E;
+}
+
+/* ---------------------------------------(EVERY PAGE)----------------------------------- */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: var(--cream);
+    color: var(--brown);
+    line-height: 1.6;
+}
+
+a { color: var(--maroon); }
+h1, h2, h3 { font-style: italic; font-weight: normal; }
+h2 { font-size: 1.8rem; text-align: center; margin: 0 0 1rem; }
+ul { list-style: none; padding: 0; }
+
+/* Header and nav */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 2rem;
+}
+.logo { height: 150px; width: auto; display: block; }
+nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brown);
+    padding-bottom: 0.2rem;
+}
+nav a:hover, nav a.active { border-bottom: 2px solid var(--olive); }
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid var(--maroon);
+    border-radius: 999px;
+    background: var(--cream);
+    color: var(--maroon);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+}
+.btn-dark { background: var(--green); border-color: var(--green); color: var(--cream); }
+
+/* Dotted circle icon */
+.circle {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 0.5rem;
+    border: 4px dotted var(--maroon);
+    border-radius: 50%;
+    background: var(--cream);
+}
+
+/* Arched photo frame */
+.piece {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 2px solid var(--maroon);
+    border-radius: 200px 200px 8px 8px;
+}
+.piece img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+figcaption { font-style: italic; margin-top: 0.5rem; }
+
+/* Footer */
+footer { background: var(--maroon); color: var(--cream); padding: 2.5rem 2rem 1.5rem; }
+footer a { color: var(--cream); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer h3 { margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; }
+footer ul { margin: 0; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; align-items: start; }
+.footer-logo { display: block; height: 140px; width: auto; margin-bottom: 0.5rem; }
+.footer-grid p { font-style: italic; margin: 0; }
+
+.copyright {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--cream);
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+}
+
+@media (max-width: 700px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    nav ul { flex-wrap: wrap; }
+}
+
+
+/* ---------------------------------------SHARED INNER-PAGE PIECES----------------------------------- */
+
+/* Pink page title band with scalloped bottom edge */
+.about-title,
+.process-title,
+.supplies-title,
+.tips-title {
+    position: relative;
+    margin-bottom: 12px;
+    padding: 2rem 1rem 1.5rem;
+    background-color: var(--pink);
+    text-align: center;
+}
+.about-title::after,
+.process-title::after,
+.supplies-title::after,
+.tips-title::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: radial-gradient(circle at 10px 0, var(--pink) 9px, transparent 10px) 0 0 / 20px 12px repeat-x;
+}
+.about-title h1,
+.process-title h1,
+.supplies-title h1,
+.tips-title h1 {
+    font-size: 2.8rem;
+    margin: 0 0 0.25rem;
+}
+.about-title h1 { margin-bottom: 0.5rem; }
+.process-title p,
+.tips-title p { margin: 0 0 0.75rem; }
+.supplies-title p { margin: 0; }
+
+/* Jump links under the title */
+.about-jump ul,
+.process-jump ul,
+.tips-jump ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+}
+.about-jump a,
+.process-jump a,
+.tips-jump a {
+    color: var(--green);
+    font-size: 0.85rem;
+}
+.about-jump a:hover,
+.process-jump a:hover,
+.tips-jump a:hover {
+    border-bottom-color: var(--green);
+}
+
+/* Pink band with scalloped top and bottom edges */
+.about-history,
+.process-band,
+.tips-resources {
+    position: relative;
+    margin: 12px 0;
+    background-color: var(--pink);
+}
+.about-history,
+.tips-resources {
+    padding: 2.5rem 2rem 3rem;
+    text-align: center;
+}
+.about-history::before, .about-history::after,
+.process-band::before, .process-band::after,
+.tips-resources::before, .tips-resources::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+.about-history::before,
+.process-band::before,
+.tips-resources::before {
+    bottom: 100%;
+    background: radial-gradient(circle at 10px 12px, var(--pink) 9px, transparent 10px) 0 0 / 20px 12px repeat-x;
+}
+.about-history::after,
+.process-band::after,
+.tips-resources::after {
+    top: 100%;
+    background: radial-gradient(circle at 10px 0, var(--pink) 9px, transparent 10px) 0 0 / 20px 12px repeat-x;
+}
+
+/* Numbered circle (timeline dots and process steps) */
+.about-dot,
+.process-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0.5rem;
+    background-color: var(--cream);
+    border: 1.5px solid var(--green);
+    border-radius: 50%;
+    color: var(--green);
+}
+.about-dot { margin: 0 auto 0.5rem; font-size: 0.8rem; }
+.process-num { font-style: italic; }
+
+/* Closing call to action */
+.about-cta,
+.supplies-cta {
+    padding: 2.5rem 2rem 3rem;
+    text-align: center;
+}
+.about-cta p,
+.supplies-cta p {
+    margin: 0 0 0.75rem;
+    font-style: italic;
+    font-size: 1.25rem;
+}
+
+/* Phone */
+@media (max-width: 700px) {
+    .about-title h1,
+    .process-title h1,
+    .supplies-title h1,
+    .tips-title h1 { font-size: 2.2rem; }
+}
+
+
+/* ---------------------------------------HOME PAGE----------------------------------- */
+
+/* Hero */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    text-align: left;
+    background-color: var(--maroon);
+    color: var(--cream);
+    margin: 0 2rem;
+    padding: 5rem 2rem;
+    border-radius: 6px;
+    border: 3px double var(--cream);
+    outline: 2px solid var(--maroon);
+}
+.hero-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 160px 160px 8px 8px;
+    border: 3px solid var(--cream);
+}
+.hero h1 { font-size: 4.5rem; line-height: 1.1; margin: 0 0 1rem; }
+.hero p { font-size: 1.3rem; max-width: 36rem; margin: 0 0 1.5rem; }
+
+/* Banner strip */
+.strip {
+    background: var(--maroon);
+    color: var(--cream);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 0.8rem 1rem;
+    margin: 2rem 0 0;
+}
+
+/* Gallery */
+.gallery { padding: 2.5rem 2rem; text-align: center; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+.gallery figure { margin: 0; }
+
+/* Start wherever you like */
+.paths { background: var(--pink); padding: 2.5rem 2rem; text-align: center; }
+.paths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+.paths-grid a { color: inherit; text-decoration: none; display: block; }
+.paths-grid a:hover h3 { text-decoration: underline; }
+.paths h3 { margin: 0; }
+
+/* Tip band */
+.tip-band {
+    padding: 3rem 2rem;
+    background: repeating-linear-gradient(90deg, #d9d29a 0 20px, var(--cream) 20px 40px);
+}
+.tip-card {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    background: var(--cream);
+    border: 3px double var(--maroon);
+}
+
+/* Meet the studio */
+.studio {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: center;
+    text-align: left;
+    padding: 2rem;
+}
+.studio h2 { text-align: left; }
+.oval {
+    width: 80%;
+    height: 350px;
+    padding: 0;
+    overflow: hidden;
+    border: 3px solid var(--maroon);
+    border-radius: 150px 150px 8px 8px;
+}
+.oval img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+/* Phone */
+@media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 3rem; }
+    .hero p { font-size: 1.2rem; }
+    .studio { grid-template-columns: 1fr; }
+    .oval { height: 240px; }
+}
+
+
+/* ---------------------------------------ABOUT PAGE----------------------------------- */
+
+/* Pull-quote inside the "Why I chose stained glass" card */
+.about-quote {
+    margin: 1rem 0 0;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--green);
+}
+
+/* Gallery */
+.about-gallery {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* History timeline */
+.about-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 1.5rem auto 0;
+    padding: 0;
+    list-style: none;
+}
+.about-timeline::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 12.5%;
+    right: 12.5%;
+    border-top: 2px dotted var(--maroon);
+}
+.about-timeline li {
+    position: relative;
+}
+.about-timeline h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.2rem;
+}
+.about-timeline p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+.about-era {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--green);
+}
+
+/* Phone */
+@media (max-width: 700px) {
+    .about-timeline {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .about-timeline::before { display: none; }
+}
+
+
+/* ---------------------------------------PROCESS PAGE----------------------------------- */
+
+/* Overview video */
+.process-overview {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 1.5rem;
+    text-align: center;
+}
+.process-overview p {
+    margin: 0.75rem 0 0;
+    font-style: italic;
+}
+.process-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--pink);
+    border: 2px solid var(--maroon);
+    border-radius: 8px;
+}
+
+/* One step: photos on one side, text on the other */
+.process-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 2.5rem max(2rem, calc((100% - 1000px) / 2));
+}
+.process-flip .process-photos {
+    order: 2;
+}
+
+/* Two photos per step */
+.process-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+.process-photos img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background-color: var(--cream);
+    border: 2px solid var(--maroon);
+    border-radius: 8px;
+}
+
+/* Step text */
+.process-text h2 {
+    margin: 0 0 0.5rem;
+    text-align: left;
+}
+.process-text p {
+    margin: 0 0 1rem;
+}
+
+@media (max-width: 700px) {
+    .process-step {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 1.25rem;
+    }
+    .process-flip .process-photos {
+        order: 0;
+    }
+}
+
+
+/* ---------------------------------------SUPPLIES PAGE----------------------------------- */
+
+/* "What you'll need" */
+.supplies-basics {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2rem;
+}
+.supplies-group {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+.supplies-group h3 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+.supplies-note {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    color: var(--green);
+}
+
+/* Cards */
+.supplies-grid {
+    display: grid;
+    gap: 2rem 1.5rem;
+    margin: 1.5rem 0 0;
+}
+.supplies-grid-three {
+    grid-template-columns: repeat(3, 1fr);
+}
+.supplies-grid-two {
+    grid-template-columns: repeat(2, calc((100% - 3rem) / 3));
+    justify-content: center;
+}
+.supplies-card {
+    text-align: center;
+}
+.supplies-card h4 {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: normal;
+}
+.supplies-card p {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+}
+.supplies-label,
+.supplies-card .supplies-label {
+    margin: 0.5rem 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--green);
+}
+
+/* Link to the Process page under the tools */
+.supplies-more {
+    margin: 2rem 0 0;
+    text-align: center;
+    font-style: italic;
+}
+.supplies-more a {
+    color: var(--green);
+}
+
+/* Data table */
+.supplies-glance {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+}
+.supplies-table-wrap {
+    overflow-x: auto;
+    border: 2px solid var(--maroon);
+    border-radius: 8px;
+}
+.supplies-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.supplies-table caption {
+    padding: 0 0 0.75rem;
+    font-style: italic;
+    caption-side: top;
+}
+.supplies-table th,
+.supplies-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--maroon);
+    text-align: left;
+}
+.supplies-table thead th {
+    background-color: var(--pink);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+}
+.supplies-table tbody th {
+    font-style: italic;
+    font-weight: normal;
+}
+.supplies-table tbody tr:last-child th,
+.supplies-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.supplies-table tbody tr:nth-child(even) {
+    background-color: rgba(239, 201, 200, 0.35);
+}
+
+/* Workstation card */
+.supplies-wide {
+    max-width: 640px;
+}
+.supplies-ws {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+.supplies-ws img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 110px;
+    object-fit: cover;
+    background-color: var(--pink);
+    border: 2px solid var(--maroon);
+    border-radius: 8px;
+}
+.supplies-ws-main {
+    grid-row: span 2;
+}
+
+/* Phone */
+@media (max-width: 700px) {
+    .supplies-basics { padding: 2rem 1.25rem 1rem; }
+    .supplies-glance { padding: 1.5rem 1.25rem 2.5rem; }
+    .supplies-grid-three,
+    .supplies-grid-two {
+        grid-template-columns: 1fr;
+    }
+    .supplies-card .piece {
+        max-width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .supplies-ws {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    .supplies-ws-main {
+        grid-column: span 2;
+        grid-row: auto;
+        min-height: 180px;
+    }
+}
+
+
+/* ---------------------------------------TIPS PAGE----------------------------------- */
+
+/* Tip cards */
+.tips-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 3.5rem;
+}
+.tips-card {
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    background-color: var(--cream);
+    border: 3px double var(--maroon);
+}
+.tips-card .circle {
+    width: 56px;
+    height: 56px;
+}
+.tips-card h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+}
+.tips-card ul {
+    margin: 0;
+    text-align: left;
+}
+.tips-card li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 1.4rem;
+    font-size: 0.95rem;
+}
+.tips-card li::before {
+    content: "\2726";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+}
+
+/* Helpful resources list */
+.tips-resources > p {
+    margin: 0 0 1rem;
+}
+.tips-links {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+}
+.tips-links li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--maroon);
+}
+.tips-links li:last-child {
+    border-bottom: none;
+}
+.tips-links a {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--green);
+}
+.tips-links p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Tip form */
+.tips-form-card {
+    max-width: 520px;
+    text-align: left;
+}
+.tips-form-card h2,
+.tips-form-card > p {
+    text-align: center;
+}
+.tips-field {
+    margin: 0 0 1rem;
+    padding: 0;
+    border: none;
+}
+.tips-field label,
+.tips-field legend {
+    display: block;
+    margin: 0 0 0.25rem;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+}
+.tips-field input[type="text"],
+.tips-field input[type="email"],
+.tips-field textarea {
+    width: 100%;
+    padding: 0.4rem 0.25rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--maroon);
+    border-radius: 0;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 1rem;
+}
+.tips-field textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+.tips-field input::placeholder,
+.tips-field textarea::placeholder {
+    color: var(--olive);
+}
+.tips-field input[type="text"]:focus,
+.tips-field input[type="email"]:focus,
+.tips-field textarea:focus {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+}
+
+/* Experience level */
+.tips-radio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tips-radio legend {
+    width: 100%;
+}
+.tips-radio input {
+    position: absolute;
+    opacity: 0;
+}
+.tips-radio input + label {
+    display: inline-block;
+    margin: 0;
+    padding: 0.25rem 0.9rem;
+    border: 1px solid var(--maroon);
+    border-radius: 999px;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.tips-radio input:checked + label {
+    background-color: var(--green);
+    border-color: var(--green);
+    color: var(--cream);
+}
+.tips-radio input:focus-visible + label {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+}
+
+/* Permission checkbox, note, and button */
+.tips-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
+}
+.tips-check input {
+    margin-top: 0.35rem;
+    accent-color: var(--green);
+}
+.tips-privacy {
+    margin: 0 0 1rem;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+.tips-form .btn {
+    display: block;
+    margin: 0 auto;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Phone */
+@media (max-width: 700px) {
+    .tips-cards {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.25rem 2.5rem;
+    }
+    .tips-resources { padding: 2rem 1.25rem 2.5rem; }
+}
